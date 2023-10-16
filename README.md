@@ -114,41 +114,97 @@ Network Configuration untuk masing-masing node
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/arjuna.D25.com
   ```
-- Buka file arjuna.D25.com dan edit menjadi
+- Buka file abimanyu.D25.com 
   ```
-  
+  nano /etc/bind/jarkom/arjuna.D25.com
   ```
+  Edit menjadi
 - Restart bind9
   ```
   service bind9 restart
   ```
 
 ### Soal 3
-- Install aplikasi bind9 pada Yudhistira dengan
-  ```
-  apt-get update
-  apt-get install bind9 -y
-  ```
-- Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com 
+
+- Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com pada Yudhistira
   ```
   nano /etc/bind/named.conf.local
   ```
 
   Kemudian isikan konfigurasi domain
+  ```
+  zone "abimanyu.D25.com" {
+	type master;
+  	file "/etc/bind/jarkom/abimanyu.D25.com";
+  };
+  ```
 
-- Membuat folder jarkom jika belum ada 
-  ```
-  mkdir /etc/bind/jarkom
-  ```
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file abimanyu.D25.com
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/abimanyu.D25.com
   ```
-- Buka file arjuna.D25.com dan edit menjadi
+- Buka file abimanyu.D25.com 
   ```
+  nano /etc/bind/jarkom/abimanyu.D25.com
+  ```
+  Edit menjadi
   
-  ```
 - Restart bind9
   ```
   service bind9 restart
   ```
+
+### Soal 4
+- Pada Yudhistira buka file abimanyu.D25.com dan edit menjadi
+  ```
+  nano /etc/bind/jarkom/abimanyu.D25.com
+  ```
+  Edit menjadi
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
+
+### Soal 5
+- Membuka file named.conf.local untuk konfigurasi reverse domain abimanyu.D25.com pada Yudhistira
+  ```
+  nano /etc/bind/named.conf.local
+  ```
+
+  Kemudian isikan konfigurasi domain
+- Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file 3.34.10.in-addr.arpa.com
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/3.34.10.in-addr.arpa.com
+  ```
+- Buka file 3.34.10.in-addr.arpa.com 
+  ```
+  nano /etc/bind/jarkom/3.34.10.in-addr.arpa.com
+  ```
+  Edit menjadi
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
+### Soal 6
+#### Pada Yudhistira sebagai DNS Master
+- Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com
+  ```
+  nano /etc/bind/named.conf.local
+  ```
+
+  Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+
+#### Pada Werkudara sebagai DNS Slave
+- Install aplikasi bind9 dengan
+  ```
+  apt-get update
+  apt-get install bind9 -y
+  ```
+- Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com
+  ```
+  nano /etc/bind/named.conf.local
+  ```
+
+  Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+### Soal 7
+
