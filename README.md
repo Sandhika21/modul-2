@@ -155,7 +155,7 @@ Network Configuration untuk masing-masing node
   ```
 
 ### Soal 4
-- Pada Yudhistira buka file abimanyu.D25.com dan edit menjadi
+- Pada Yudhistira buka file abimanyu.D25.com
   ```
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
@@ -193,7 +193,10 @@ Network Configuration untuk masing-masing node
   ```
 
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
-
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
 #### Pada Werkudara sebagai DNS Slave
 - Install aplikasi bind9 dengan
   ```
@@ -204,7 +207,70 @@ Network Configuration untuk masing-masing node
   ```
   nano /etc/bind/named.conf.local
   ```
-
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
 ### Soal 7
+#### Pada Yudhistira
+- Buka file abimanyu.D25.com 
+  ```
+  nano /etc/bind/jarkom/abimanyu.D25.com
+  ```
+  Edit menjadi
+- Buka file named.conf.options
+  ```
+  nano /etc/bind/named.conf.options
+  ```
+  Edit menjadi
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
+#### Pada Werkudara
+- Membuka file named.conf.local untuk konfigurasi domain baratayuda.abimanyu.D25.com 
+  ```
+  nano /etc/bind/named.conf.local
+  ```
 
+  Kemudian isikan konfigurasi domain
+- Membuat folder baratayuda
+  ```
+  mkdir /etc/bind/baratayuda
+  ```
+
+- Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file baratayuda.abimanyu.D25.com
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/baratayuda.abimanyu.D25.com
+  ```
+- Buka file baratayuda.abimanyu.D25.com 
+  ```
+  nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
+  ```
+  Edit menjadi
+- Buka file named.conf.options
+  ```
+  nano /etc/bind/named.conf.options
+  ```
+  Edit menjadi
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
+
+### Testing
+- Pada bagian client Nakula dan Sadewa buka file resolv.conf
+  ```
+  nano /etc/resolv.conf
+  ```
+  Isikan pada file
+  ```
+  nameserver 10.34.2.2 ;	IP Yudhistira
+  nameserver 10.34.3.2 ;	IP Werkudara
+  ```
+- Hasil ping arjuna.D25.com
+- Hasil ping abimanyu.D25.com
+- Hasil ping 3.34.10.in-addr.arpa
+- Hasil ping parikesit.abimanyu.D25.com
+- Hasil ping baratayuda.abimanyu.D25.com
