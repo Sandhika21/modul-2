@@ -94,5 +94,61 @@ Network Configuration untuk masing-masing node
 	  gateway 10.34.3.1
   ```
 ### Soal 2
+- Install aplikasi bind9 pada Yudhistira dengan
+  ```
+  apt-get update
+  apt-get install bind9 -y
+  ```
+- Membuka file named.conf.local untuk konfigurasi domain arjuna.D25.com 
+  ```
+  nano /etc/bind/named.conf.local
+  ```
 
+  Kemudian isikan konfigurasi domain
 
+- Membuat folder jarkom jika belum ada 
+  ```
+  mkdir /etc/bind/jarkom
+  ```
+- Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file arjuna.D25.com
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/arjuna.D25.com
+  ```
+- Buka file arjuna.D25.com dan edit menjadi
+  ```
+  
+  ```
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
+
+### Soal 3
+- Install aplikasi bind9 pada Yudhistira dengan
+  ```
+  apt-get update
+  apt-get install bind9 -y
+  ```
+- Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com 
+  ```
+  nano /etc/bind/named.conf.local
+  ```
+
+  Kemudian isikan konfigurasi domain
+
+- Membuat folder jarkom jika belum ada 
+  ```
+  mkdir /etc/bind/jarkom
+  ```
+- Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file abimanyu.D25.com
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/abimanyu.D25.com
+  ```
+- Buka file arjuna.D25.com dan edit menjadi
+  ```
+  
+  ```
+- Restart bind9
+  ```
+  service bind9 restart
+  ```
