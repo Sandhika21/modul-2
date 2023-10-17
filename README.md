@@ -313,6 +313,13 @@ Di dalam `named.conf.local` pada Werkudara, tambahkan konfigurasi untuk zona `ab
   ```
 Konfigurasi Yudhistira sebagai DNS Master dan Werkudara sebagai DNS Slave untuk `zona abimanyu.D25.com`. Werkudara akan secara teratur mengambil zona sekunder dari Yudhistira dan akan dapat melayani permintaan DNS jika Yudhistira mengalami masalah.
 ### Soal 7
+Soal:
+
+"Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatlah subdomain khusus untuk perang yaitu `baratayuda.abimanyu.yyy.com` dengan alias `www.baratayuda.abimanyu.yyy.com `yang didelegasikan dari Yudhistira ke Werkudara dengan IP menuju ke Abimanyu dalam folder Baratayuda."
+
+Penjelasan Soal:
+
+Membuat subdomain `baratayuda.abimanyu.yyy.com` (dengan alias `www.baratayuda.abimanyu.yyy.com`) dan mendelegrasikannya dari Yudhistira ke Werkudara, dengan IP menuju server Abimanyu.
 #### Pada Yudhistira
 - Buka file abimanyu.D25.com 
   ```
@@ -320,6 +327,8 @@ Konfigurasi Yudhistira sebagai DNS Master dan Werkudara sebagai DNS Slave untuk 
   ```
   Edit menjadi
   
+Pastikan untuk menggantikan alamat IP yang sesuai dari server Werkudara. Ini adalah langkah delegasi DNS ke Werkudara.
+
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/Y-ab.png)
 - Buka file named.conf.options
   ```
@@ -339,14 +348,20 @@ Konfigurasi Yudhistira sebagai DNS Master dan Werkudara sebagai DNS Slave untuk 
   ```
 
   Kemudian isikan konfigurasi domain
-  
+
+Di dalam `named.conf.local`, tambahkan konfigurasi untuk zona `baratayuda.abimanyu.D25.com`. Werkudara akan menjadi tuan rumah bagi zona ini sebagai server DNS sekunder.
+
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/W-ab.png)
 - Membuat folder baratayuda
+
+  Buat folder baratayuda di dalam direktori `/etc/bind` jika folder tersebut belum ada.
   ```
   mkdir /etc/bind/baratayuda
   ```
 
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file baratayuda.abimanyu.D25.com
+
+  Selanjutnya, Anda perlu menyalin file `db.local` ke dalam folder baratayuda dengan nama file `baratayuda.abimanyu.D25.com`.
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/baratayuda.abimanyu.D25.com
   ```
@@ -368,7 +383,8 @@ Konfigurasi Yudhistira sebagai DNS Master dan Werkudara sebagai DNS Slave untuk 
   ```
   service bind9 restart
   ```
-### Soal 8
+
+  ### Soal 8
 - Buka file baratayuda.abimanyu.D25.com 
   ```
   nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
