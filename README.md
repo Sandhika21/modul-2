@@ -270,7 +270,13 @@ Network Configuration untuk masing-masing node
   ```
   service bind9 restart
   ```
-
+### Soal 8
+- Buka file baratayuda.abimanyu.D25.com 
+  ```
+  nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
+  ```
+  Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/8/W-rpj.png)
 ### Testing
 - Pada bagian client Nakula dan Sadewa buka file resolv.conf
   ```
@@ -291,3 +297,5 @@ Network Configuration untuk masing-masing node
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/par.png)
 - Hasil ping baratayuda.abimanyu.D25.com
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/bar.png)
+- Hasil ping rjp.baratayuda.abimanyu.D25.com
+![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/rjp.png)
