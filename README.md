@@ -7,7 +7,10 @@
 
 ### Soal 1
 ![alt_text]()
-
+Soal: 
+"Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjuna merupakan Load Balancer yang terdiri dari beberapa Web Server yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Buatlah topologi dengan pembagian sebagai berikut. Folder topologi dapat diakses pada drive berikut"
+Penjelasan:
+Membuat sebuah topologi jaringan dengan beberapa node yang memiliki konfigurasi jaringan tertentu. Node-node ini adalah Pandudewanata, Yudhistira, Nakula, Sadewa, Werkudara, Arjuna, Abimanyu, Prabakusuma, dan Wisanggeni.
 Network Configuration untuk masing-masing node
 - Pandudewanata
   ```
@@ -93,6 +96,10 @@ Network Configuration untuk masing-masing node
 	  netmask 255.255.255.0
 	  gateway 10.34.3.1
   ```
+Penjelasan jawaban:
+`Eth0`: Mendapatkan alamat IP melalui `DHCP`.
+Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi sebagai router atau gateway untuk node lainnya. Yudhistira adalah DNS Master, Werkudara adalah DNS Slave, dan Arjuna adalah Load Balancer yang terdiri dari beberapa server web, yaitu Prabakusuma, Abimanyu, dan Wisanggeni.
+
 ### Soal 2
 - Install aplikasi bind9 pada Yudhistira dengan
   ```
