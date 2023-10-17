@@ -118,6 +118,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
+  
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar.png)
 - Membuat folder jarkom jika belum ada 
   ```
@@ -132,6 +133,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/arjuna.D25.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar2.png)
 - Restart bind9
   ```
@@ -162,6 +164,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/3/ab.png)
   
 - Restart bind9
@@ -175,6 +178,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/4/par.png)
 - Restart bind9
   ```
@@ -188,6 +192,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab.png)
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file 3.34.10.in-addr.arpa.com
   ```
@@ -198,6 +203,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/3.34.10.in-addr.arpa.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab2.png)
 - Restart bind9
   ```
@@ -211,6 +217,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/Y-ab.png)
 - Restart bind9
   ```
@@ -227,6 +234,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/named.conf.local
   ```
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/W-ab.png)
 - Restart bind9
   ```
@@ -239,12 +247,14 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/Y-ab.png)
 - Buka file named.conf.options
   ```
   nano /etc/bind/named.conf.options
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/op.png)
 - Restart bind9
   ```
@@ -257,6 +267,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/W-ab.png)
 - Membuat folder baratayuda
   ```
@@ -272,12 +283,14 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/W-ab2.png)
 - Buka file named.conf.options
   ```
   nano /etc/bind/named.conf.options
   ```
   Edit menjadi
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/op.png)
 - Restart bind9
   ```
@@ -289,7 +302,8 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
   ```
   Edit menjadi
-  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/8/W-rpj.png)
+  
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/8/W-rjp.png)
 ### Testing
 - Pada bagian client Nakula dan Sadewa buka file resolv.conf
   ```
@@ -301,14 +315,20 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nameserver 10.34.3.2 ;	IP Werkudara
   ```
 - Hasil ping arjuna.D25.com
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/ar.png)
 - Hasil ping abimanyu.D25.com
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/ab.png)
 - Hasil ping 3.34.10.in-addr.arpa
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/rv-ab.png)
 - Hasil ping parikesit.abimanyu.D25.com
+  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/par.png)
 - Hasil ping baratayuda.abimanyu.D25.com
+  
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/bar.png)
 - Hasil ping rjp.baratayuda.abimanyu.D25.com
+  
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/rjp.png)
