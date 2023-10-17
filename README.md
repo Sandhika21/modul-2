@@ -6,12 +6,8 @@
 | 2 | Sandhika Surya Ardyanto | 5025211022 |
 
 ### Soal 1
-![alt_text]()
-Soal: 
-"Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjuna merupakan Load Balancer yang terdiri dari beberapa Web Server yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Buatlah topologi dengan pembagian sebagai berikut. Folder topologi dapat diakses pada drive berikut"
+![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/1.png)
 
-Penjelasan:
-Membuat sebuah topologi jaringan dengan beberapa node yang memiliki konfigurasi jaringan tertentu. Node-node ini adalah Pandudewanata, Yudhistira, Nakula, Sadewa, Werkudara, Arjuna, Abimanyu, Prabakusuma, dan Wisanggeni.
 Network Configuration untuk masing-masing node
 - Pandudewanata
   ```
@@ -97,11 +93,6 @@ Network Configuration untuk masing-masing node
 	  netmask 255.255.255.0
 	  gateway 10.34.3.1
   ```
-Penjelasan jawaban:
-`Eth0`: Mendapatkan alamat IP melalui `DHCP`.
-
-Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi sebagai router atau gateway untuk node lainnya. Yudhistira adalah DNS Master, Werkudara adalah DNS Slave, dan Arjuna adalah Load Balancer yang terdiri dari beberapa server web, yaitu Prabakusuma, Abimanyu, dan Wisanggeni.
-
 ### Soal 2
 - Install aplikasi bind9 pada Yudhistira dengan
   ```
@@ -114,7 +105,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
-
+![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar.png)
 - Membuat folder jarkom jika belum ada 
   ```
   mkdir /etc/bind/jarkom
@@ -123,11 +114,12 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/arjuna.D25.com
   ```
-- Buka file abimanyu.D25.com 
+- Buka file arjuna.D25.com 
   ```
   nano /etc/bind/jarkom/arjuna.D25.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar2.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -157,6 +149,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/3/ab.png)
   
 - Restart bind9
   ```
@@ -169,6 +162,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/4/par.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -181,6 +175,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab.png)
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file 3.34.10.in-addr.arpa.com
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/3.34.10.in-addr.arpa.com
@@ -190,6 +185,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/3.34.10.in-addr.arpa.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab2.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -202,6 +198,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/Y-ab.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -217,6 +214,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/named.conf.local
   ```
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/W-ab.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -228,11 +226,13 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/Y-ab.png)
 - Buka file named.conf.options
   ```
   nano /etc/bind/named.conf.options
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/op.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -244,6 +244,7 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/W-ab.png)
 - Membuat folder baratayuda
   ```
   mkdir /etc/bind/baratayuda
@@ -258,11 +259,13 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/W-ab2.png)
 - Buka file named.conf.options
   ```
   nano /etc/bind/named.conf.options
   ```
   Edit menjadi
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/7/op.png)
 - Restart bind9
   ```
   service bind9 restart
@@ -279,7 +282,12 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   nameserver 10.34.3.2 ;	IP Werkudara
   ```
 - Hasil ping arjuna.D25.com
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/ar.png)
 - Hasil ping abimanyu.D25.com
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/ab.png)
 - Hasil ping 3.34.10.in-addr.arpa
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/rv-ab.png)
 - Hasil ping parikesit.abimanyu.D25.com
+  ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/par.png)
 - Hasil ping baratayuda.abimanyu.D25.com
+![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/bar.png)
