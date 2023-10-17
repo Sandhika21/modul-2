@@ -202,19 +202,40 @@ Penjelasan Jawaban:
 
 langkah-langkah yang dibutuhkan untuk mengkonfigurasi DNS yang memungkinkan domain `arjuna.D25.com` dan `abimanyu.D25.com` dengan subdomain `www.arjuna.yyy.com` dan `www.abimanyu.yyy.com` (dengan yyy sebagai kode kelompok). Dengan mengikuti langkah-langkah ini, Anda akan memiliki server DNS yang dapat mengarahkan permintaan ke website utama yang sesuai pada Node Arjuna dan Abimanyu. Pastikan untuk melakukan konfigurasi berkas zona dengan benar untuk menghubungkan nama domain dan subdomain dengan alamat IP yang tepat sesuai dengan kebutuhan.
 ### Soal 4
+Soal:
+
+"Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu."
+
+Penjelasan Soal:
+
+Buat sebuah subdomain dengan nama `parikesit` di bawah domain `abimanyu.yyy.com` yang kemudian akan diarahkan ke server Abimanyu. Ini berguna jika ingin meng-host beberapa website dengan subdomain yang berbeda di server yang sama.
 - Pada Yudhistira buka file abimanyu.D25.com
   ```
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
+
+Dalam berkas `abimanyu.D25.com`, perlu ditambahkan rekaman DNS yang akan mengarahkan subdomain `parikesit` ke server Abimanyu. Ini dilakukan dengan menambahkan rekaman A (Address) yang menentukan alamat IP tujuan subdomain tersebut.
   
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/4/par.png)
 - Restart bind9
   ```
   service bind9 restart
   ```
+  Penjelasan Jawaban:
 
+Dengan melakukan ini, konfigurasi DNS yang telah di ubah akan mulai berlaku, dan subdomain `parikesit.abimanyu.yyy.com` akan diarahkan ke server Abimanyu sesuai dengan konfigurasi yang Anda tambahkan ke berkas `abimanyu.D25.com`.
+
+Dengan Menambahkan subdomain `parikesit.abimanyu.yyy.com` ke dalam konfigurasi DNS yang dikelola di server Yudhistira, sehingga subdomain tersebut dapat diarahkan ke server Abimanyu. Pastikan konfigurasi berkas `abimanyu.D25.com` telah diperbarui dengan benar sesuai dengan rekaman DNS yang di tambahkan.
+  
 ### Soal 5
+soal: 
+
+"Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)"
+
+Penjelasan Soal:
+
+Soal ini mencakup konfigurasi Reverse DNS untuk domain utama `abimanyu.D25.com`. Reverse DNS digunakan untuk menghubungkan alamat IP dengan nama domain yang sesuai. Pada kasus ini, Anda diminta untuk membuat konfigurasi Reverse DNS untuk server Abimanyu.
 - Membuka file named.conf.local untuk konfigurasi reverse domain abimanyu.D25.com pada Yudhistira
   ```
   nano /etc/bind/named.conf.local
@@ -222,6 +243,7 @@ langkah-langkah yang dibutuhkan untuk mengkonfigurasi DNS yang memungkinkan doma
 
   Kemudian isikan konfigurasi domain
   
+Setelah membuka file `named.conf.local`, perlu menambahkan konfigurasi zona Reverse DNS yang sesuai. Dalam kasus ini, Anda akan menambahkan zona `3.34.10.in-addr.arpa`. Ini adalah zona Reverse DNS untuk subnet IP server.
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab.png)
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file 3.34.10.in-addr.arpa.com
   ```
@@ -232,21 +254,36 @@ langkah-langkah yang dibutuhkan untuk mengkonfigurasi DNS yang memungkinkan doma
   nano /etc/bind/jarkom/3.34.10.in-addr.arpa.com
   ```
   Edit menjadi
-  
+
+  Dalam file `3.34.10.in-addr.arpa.com`, perlu ditambahkan rekaman PTR (Pointer) yang menghubungkan alamat IP ke nama domain Abimanyu.
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/5/rv-ab2.png)
 - Restart bind9
   ```
   service bind9 restart
   ```
+  Penjelasan Jawaban:
+
+Membuat konfigurasi Reverse DNS untuk domain utama Abimanyu. Konfigurasi ini akan memungkinkan untuk menghubungkan alamat IP dengan nama domain Abimanyu yang sesuai. Pastikan konfigurasi berkas `3.34.10.in-addr.arpa.com` telah diperbarui dengan benar sesuai dengan rekaman PTR yang Anda tambahkan.
 ### Soal 6
+Soal:
+
+"Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga Werkudara sebagai DNS Slave untuk domain utama."
+
+Penjelasan Soal:
+
+Konfigurasi DNS Master-Slave antara Yudhistira (DNS Master) dan Werkudara (DNS Slave) untuk domain utama `abimanyu.D25.com`. Ini memungkinkan Werkudara untuk memiliki salinan (zona sekunder) dari zona DNS yang dimiliki oleh Yudhistira, sehingga jika Yudhistira mengalami masalah, DNS dapat tetap beroperasi.
 #### Pada Yudhistira sebagai DNS Master
 - Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com
+  
+Di Yudhistira (DNS Master), buka file `named.conf.local` untuk mengkonfigurasi `zona abimanyu.D25.com`.
   ```
   nano /etc/bind/named.conf.local
   ```
 
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
   
+Di dalam `named.conf.local`, tambahkan konfigurasi untuk zona `abimanyu.D25.com`. Ini akan mendefinisikan Yudhistira sebagai DNS Master untuk zona ini.
+
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/Y-ab.png)
 - Restart bind9
   ```
@@ -259,16 +296,22 @@ langkah-langkah yang dibutuhkan untuk mengkonfigurasi DNS yang memungkinkan doma
   apt-get install bind9 -y
   ```
 - Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com
+
+  Di Werkudara, buka file `named.conf.local` untuk mengkonfigurasi zona `abimanyu.D25.com`
+  
   ```
   nano /etc/bind/named.conf.local
   ```
   Kemudian isikan konfigurasi domain abimanyu.D25.com menjadi
-  
+
+Di dalam `named.conf.local` pada Werkudara, tambahkan konfigurasi untuk zona `abimanyu.D25.com`. Namun, berbeda dengan Yudhistira, Werkudara harus didefinisikan sebagai DNS Slave untuk zona ini.
+
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/6/W-ab.png)
 - Restart bind9
   ```
   service bind9 restart
   ```
+Konfigurasi Yudhistira sebagai DNS Master dan Werkudara sebagai DNS Slave untuk `zona abimanyu.D25.com`. Werkudara akan secara teratur mengambil zona sekunder dari Yudhistira dan akan dapat melayani permintaan DNS jika Yudhistira mengalami masalah.
 ### Soal 7
 #### Pada Yudhistira
 - Buka file abimanyu.D25.com 
