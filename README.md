@@ -383,21 +383,39 @@ Di dalam `named.conf.local`, tambahkan konfigurasi untuk zona `baratayuda.abiman
   ```
   service bind9 restart
   ```
+  Penjelasan JAwaban:
+
+Membuat subdomain `baratayuda.abimanyu.yyy.com` dan mendelegrasikannya dari Yudhistira ke Werkudara. Pastikan konfigurasi berkas `abimanyu.D25.com `di Yudhistira telah diperbarui dengan benar untuk delegasi DNS ke Werkudara dan bahwa konfigurasi berkas `named.conf.local` di Werkudara telah sesuai dengan zona baru. Selain itu, pastikan rekaman DNS yang sesuai telah ditambahkan ke berkas `baratayuda.abimanyu.D25.com` di Werkudara sesuai dengan kebutuhan.
 
   ### Soal 8
-- Buka file baratayuda.abimanyu.D25.com 
+  Soal:
+
+  "Untuk informasi yang lebih spesifik mengenai Ranjapan Baratayuda, buatlah subdomain melalui Werkudara dengan akses `rjp.baratayuda.abimanyu.yyy.com` dengan alias `www.rjp.baratayuda.abimanyu.yyy.com` yang mengarah ke Abimanyu."
+
+  Penjelasan Soal:
+
+  Membuat subdomain spesifik, `rjp.baratayuda.abimanyu.yyy.com`, yang mengarah ke server Abimanyu melalui Werkudara.
+- Buka file baratayuda.abimanyu.D25.com
+
+  Buka file `baratayuda.abimanyu.D25.com di Werkudara` untuk mengedit konfigurasi DNS yang diperlukan.
   ```
   nano /etc/bind/jarkom/baratayuda.abimanyu.D25.com
   ```
   Edit menjadi
-  
+
+Dalam berkas `baratayuda.abimanyu.D25.com`, Anda perlu menambahkan rekaman DNS yang diperlukan untuk subdomain `rjp`.
+
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/8/W-rjp.png)
+  
+  Pastikan untuk menggantikan [IP Address of Abimanyu] dengan alamat IP yang sesuai dari server Abimanyu.
 ### Testing
 - Pada bagian client Nakula dan Sadewa buka file resolv.conf
   ```
   nano /etc/resolv.conf
   ```
   Isikan pada file
+
+Di dalam berkas `resolv.conf`, Anda perlu menambahkan konfigurasi DNS untuk mengarahkan permintaan DNS ke server Yudhistira dan Werkudara.
   ```
   nameserver 10.34.2.2 ;	IP Yudhistira
   nameserver 10.34.3.2 ;	IP Werkudara
@@ -420,3 +438,7 @@ Di dalam `named.conf.local`, tambahkan konfigurasi untuk zona `baratayuda.abiman
 - Hasil ping rjp.baratayuda.abimanyu.D25.com
   
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/t/rjp.png)
+
+Penjelasan Jawaban:
+
+Untuk menguji konektivitas dengan ping. Pastikan bahwa semua konfigurasi DNS telah dilakukan dengan benar dan bahwa alamat IP yang digunakan dalam konfigurasi sesuai dengan kebutuhan.
