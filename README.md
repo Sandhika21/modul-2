@@ -102,11 +102,18 @@ Network Configuration untuk masing-masing node
 	  netmask 255.255.255.0
 	  gateway 10.34.3.1
   ```
-  Penjelasan jawaban:
+  Penjelasan Jawaban:
 `Eth0`: Mendapatkan alamat IP melalui `DHCP`.
 
 Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi sebagai router atau gateway untuk node lainnya. Yudhistira adalah DNS Master, Werkudara adalah DNS Slave, dan Arjuna adalah Load Balancer yang terdiri dari beberapa server web, yaitu Prabakusuma, Abimanyu, dan Wisanggeni.
 ### Soal 2
+
+Soal: 
+"Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok."
+
+Penjelasan:
+Membuat konfigurasi DNS pada sebuah server dengan menggunakan aplikasi BIND9 di sistem operasi berbasis Debian atau Ubuntu. Tujuan dari konfigurasi ini adalah untuk membuat domain arjuna.D25.com dengan subdomain www.arjuna.yyy.com (dengan yyy sebagai kode kelompok) sebagai aliasnya.
+
 - Install aplikasi bind9 pada Yudhistira dengan
   ```
   apt-get update
@@ -118,31 +125,39 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
   Kemudian isikan konfigurasi domain
-  
 ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar.png)
 - Membuat folder jarkom jika belum ada 
   ```
   mkdir /etc/bind/jarkom
   ```
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file arjuna.D25.com
+  
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/arjuna.D25.com
   ```
-- Buka file arjuna.D25.com 
+- Buka file arjuna.D25.com
+  
+  Kita perlu mengedit berkas ini untuk menentukan rekaman DNS yang sesuai untuk domain, termasuk alamat IP yang akan dihubungkan dengan domain dan subdomain.
   ```
   nano /etc/bind/jarkom/arjuna.D25.com
   ```
   Edit menjadi
-  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/2/ar2.png)
-- Restart bind9
+- Restart bind9 untuk menerapkan perubahan konfigurasi DNS.
   ```
   service bind9 restart
   ```
-
+  Penjelasan Jawaban:
+  Dengan langkah langkah diatas, konfigurasi server DNS BIND9 untuk menghubungkan domain arjuna.D25.com dengan subdomain www.arjuna.yyy.com telah dilakukan. Pastikan bahwa konfigurasi file arjuna.D25.com telah disesuaikan dengan kebutuhan dan bahwa website utama di Node Arjuna telah siap untuk menerima permintaan DNS.
 ### Soal 3
+Soal:
+"Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses ke abimanyu.yyy.com dan alias www.abimanyu.yyy.com."
+
+Penjelasan Soal:
+Konfigurasi DNS di server menggunakan BIND9 pada sistem berbasis Debian atau Ubuntu. Tujuan dari konfigurasi ini adalah untuk membuat domain arjuna.D25.com dan abimanyu.D25.com, masing-masing dengan subdomain www.arjuna.yyy.com dan www.abimanyu.yyy.com, dengan yyy sebagai kode kelompok.
 
 - Membuka file named.conf.local untuk konfigurasi domain abimanyu.D25.com pada Yudhistira
+Edit file `named.conf.local` di server Yudhistira untuk menambahkan konfigurasi zona DNS baru. Ini adalah langkah penting dalam konfigurasi DNS. Anda mendefinisikan zona baru yang disebut `arjuna.D25.com` dan `abimanyu.D25.com`, serta mengacu pada file zona yang sesuai.
   ```
   nano /etc/bind/named.conf.local
   ```
@@ -156,22 +171,25 @@ Dalam topologi ini, Pandudewanata berperan sebagai node yang mungkin berfungsi s
   ```
 
 - Copy file db.local pada path /etc/bind ke dalam folder jarkom dengan nama file abimanyu.D25.com
+  File `db.local` adalah contoh berkas zona yang dapat digunakan sebagai template. Kita dapat menyalin file ini ke dalam folder jarkom dengan nama `arjuna.D25.com` dan `abimanyu.D25.com`.
   ```
   cp /etc/bind/db.local /etc/bind/jarkom/abimanyu.D25.com
   ```
-- Buka file abimanyu.D25.com 
+- Buka file abimanyu.D25.com
+  Edit berkas `arjuna.D25.com` dan `abimanyu.D25.com` yang telah di salin ke dalam folder jarkom. Dalam berkas ini, Anda mendefinisikan rekaman DNS yang sesuai, termasuk alamat IP yang akan dihubungkan dengan domain dan subdomain.
   ```
   nano /etc/bind/jarkom/abimanyu.D25.com
   ```
   Edit menjadi
-  
   ![alt_text](https://github.com/Sandhika21/modul-2/blob/main/jarkom2/3/ab.png)
   
 - Restart bind9
+  Restart layanan BIND9 agar semua perubahan konfigurasi DNS yang telah di buat dapat diterapkan dan berfungsi.
   ```
   service bind9 restart
   ```
-
+Penjelasan Jawaban:
+langkah-langkah yang dibutuhkan untuk mengkonfigurasi DNS yang memungkinkan domain `arjuna.D25.com` dan `abimanyu.D25.com` dengan subdomain `www.arjuna.yyy.com` dan `www.abimanyu.yyy.com` (dengan yyy sebagai kode kelompok). Dengan mengikuti langkah-langkah ini, Anda akan memiliki server DNS yang dapat mengarahkan permintaan ke website utama yang sesuai pada Node Arjuna dan Abimanyu. Pastikan untuk melakukan konfigurasi berkas zona dengan benar untuk menghubungkan nama domain dan subdomain dengan alamat IP yang tepat sesuai dengan kebutuhan.
 ### Soal 4
 - Pada Yudhistira buka file abimanyu.D25.com
   ```
